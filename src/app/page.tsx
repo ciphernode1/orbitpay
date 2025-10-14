@@ -1,103 +1,114 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const scrollToPricing = () => {
+    const section = document.getElementById("pricing");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a0f1c] to-[#0f172a] text-white">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center justify-center h-screen text-center px-4">
+        <h1 className="text-5xl md:text-6xl font-bold mb-4">
+          OrbitPay<span className="text-blue-400">®</span>
+        </h1>
+        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-12">
+          Seamless Checkout. Infinite Reach. <br />
+          The most elegant way to accept crypto payments worldwide.
+        </p>
+        <div className="flex flex-col items-center space-y-2 cursor-pointer" onClick={scrollToPricing}>
+          <span className="text-gray-400">Scroll for pricing</span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <span className="text-2xl">⬇️</span>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="py-24 bg-[#0f172a] text-center">
+        <h2 className="text-4xl font-bold mb-12">Pricing Plans</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+          {/* Starter Kit */}
+          <motion.div
+            className="bg-white text-black p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300"
+            whileHover={{ scale: 1.03 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">🌱 Starter Kit</h3>
+            <p className="text-gray-600 mb-6">
+              Begin your journey with seamless crypto checkout. Perfect for small businesses and creators.
+            </p>
+            <p className="text-3xl font-bold mb-6">$19.99</p>
+            <a
+              href="YOUR_STARTER_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md hover:shadow-lg transition"
+            >
+              Get Starter
+            </a>
+          </motion.div>
+
+          {/* Growth Kit */}
+          <motion.div
+            className="bg-white text-black p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300"
+            whileHover={{ scale: 1.03 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">🚀 Growth Kit</h3>
+            <p className="text-gray-600 mb-6">
+              Scale your business with enhanced tools. Ideal for startups ready to expand globally.
+            </p>
+            <p className="text-3xl font-bold mb-6">$49.99</p>
+            <a
+              href="YOUR_GROWTH_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md hover:shadow-lg transition"
+            >
+              Get Growth
+            </a>
+          </motion.div>
+
+          {/* Enterprise Kit */}
+          <motion.div
+            className="bg-white text-black p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300"
+            whileHover={{ scale: 1.03 }}
+          >
+            <h3 className="text-xl font-semibold mb-2">🏢 Enterprise Kit</h3>
+            <p className="text-gray-600 mb-6">
+              Unlock full power with global crypto payments. Tailored for corporations and power users.
+            </p>
+            <p className="text-3xl font-bold mb-6">$199.99</p>
+            <a
+              href="YOUR_ENTERPRISE_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md hover:shadow-lg transition"
+            >
+              Get Enterprise
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-16 bg-[#0a0f1c] text-center border-t border-gray-800">
+        <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
+        <p className="text-gray-400 mb-6">We’re here to help with any questions you may have.</p>
+        <p className="text-gray-300">
+          📧 <a href="mailto:support@orbitpay.com" className="underline">support@orbitpay.com</a>
+        </p>
+        <p className="text-gray-300 mt-2">
+          📞 +1 (555) 123-4567
+        </p>
+      </section>
     </div>
   );
 }
